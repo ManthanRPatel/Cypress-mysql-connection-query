@@ -1,0 +1,11 @@
+{
+    "video": false,
+    "env": {
+        "db": {
+          "host": "localhost",
+          "user": "root",
+          "password": "",
+          "database": "manthan_demo"
+        }
+      }
+}

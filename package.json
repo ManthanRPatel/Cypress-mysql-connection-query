@@ -1,0 +1,19 @@
+{
+  "name": "cypressDemoTest",
+  "version": "1.0.0",
+  "description": "cypress project demo",
+  "main": "index.js",
+  "scripts": {
+    "cypress": "node_modules/.bin/cypress open",
+    "cypress-run": "node_modules/.bin/cypress run",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^4.2.0"
+  },
+  "dependencies": {
+    "mysql": "^2.18.1"
+  }
+}
