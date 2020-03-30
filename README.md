@@ -1,6 +1,7 @@
 # Cypress-mysql-connection-query
-cypress mysql connection , mysql perform query ,, slect query with examples,,,
+cypress mysql connection , mysql perform query ,, select query with examples,,,
 
+available at issuse in link = https://github.com/cypress-io/cypress/issues/3689#issuecomment-558689250
 
 1) add env { } in cypress.json
 
