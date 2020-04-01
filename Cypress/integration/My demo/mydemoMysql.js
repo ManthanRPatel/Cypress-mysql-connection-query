@@ -1,3 +1,5 @@
+const pageObj = require('../PageObject/PageObject');
+
 describe('redirect on site', function() {
 
     it('mysql connection',()=>{
@@ -10,7 +12,13 @@ describe('redirect on site', function() {
 
 
     })
-
+    
+    
+    it('direct sql select query shortcut',()=>{
+        pageObj.selectQuery('tbl_city','1 ', '1').then(res =>{
+            expect(res[0].city_name).to.equal('surat');
+        })
+    })
 
 
     // for video tutorials
