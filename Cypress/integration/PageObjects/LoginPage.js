@@ -1,29 +1,14 @@
-class LoginPage{
-
-    visit(){
-        cy.visit('https://admin-demo.nopcommerce.com/login?ReturnUrl=%2Fadmin%2F');
-    }
-
-    fillEmail(value){
-      const field =  cy.get('#Email')
-      field.clear()
-      field.type(value);
-      return this
-    }
-
-    fillPassword(value){
-      const field =  cy.get('#Password')
-      field.clear()
-      field.type(value);
-      return this
-    }
-
-    submit(){
-        const button = cy.get('input[type=submit]');
-        button.click()
-    }
-
-
+export function selectQuery( tbl_name, condit , queryParams ){
+    return new Promise((resolve , reject)=>{
+        var sqlQuery = " SELECT * FROM "+ tbl_name + " WHERE "+condit ;
+        cy.task('queryTestDb',{ query: sqlQuery ,params: queryParams }).then(results => {
+            resolve(results);
+        })
+        
+    })
+    // var sqlQuery = " SELECT * FROM "+ tbl_name + " WHERE "+condit ;
+    //     var queryParams = queryParams;
+    //     cy.task('queryTestDb',{ query: sqlQuery ,params: queryParams }).then(results => {
+    //         return(results);
+    //     })
 }
-
-export default LoginPage;
