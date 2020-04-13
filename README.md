@@ -53,26 +53,31 @@ note::: performing query can take some times... so always put cy.wait(2000) in q
 ## Cypress -localstorage-jwt 
 
 1) first put code in cypress/support/commands.js
-let LOCAL_STORAGE_MEMORY = {};
+===>
 
-Cypress.Commands.add("saveLocalStorageCache", () => {
-  Object.keys(localStorage).forEach(key => {
-    LOCAL_STORAGE_MEMORY[key] = localStorage[key];
-  });
-});
+    let LOCAL_STORAGE_MEMORY = {};
 
-Cypress.Commands.add("restoreLocalStorageCache", () => {
-  Object.keys(LOCAL_STORAGE_MEMORY).forEach(key => {
-    localStorage.setItem(key, LOCAL_STORAGE_MEMORY[key]);
-  });
-});
+    Cypress.Commands.add("saveLocalStorageCache", () => {
+      Object.keys(localStorage).forEach(key => {
+        LOCAL_STORAGE_MEMORY[key] = localStorage[key];
+      });
+    });
 
-Cypress.Commands.add("clearLocalStorageCache", () => {
-    localStorage.clear();
-    LOCAL_STORAGE_MEMORY = {};
-});
+    Cypress.Commands.add("restoreLocalStorageCache", () => {
+      Object.keys(LOCAL_STORAGE_MEMORY).forEach(key => {
+        localStorage.setItem(key, LOCAL_STORAGE_MEMORY[key]);
+      });
+    });
+
+    Cypress.Commands.add("clearLocalStorageCache", () => {
+        localStorage.clear();
+        LOCAL_STORAGE_MEMORY = {};
+    });
+
+
 
 2) then call it on your file like
+===>
 
     beforeEach(() => {
         cy.restoreLocalStorageCache();
@@ -86,7 +91,9 @@ Cypress.Commands.add("clearLocalStorageCache", () => {
         cy.clearLocalStorageCache();
     });
     
-    # conclusion : doing this will prvent cypress clearing localstorage and jwt token after your all tests...
+    
+    
+   # conclusion : doing this will prvent cypress clearing localstorage and jwt token after your all tests...
 
 
 
