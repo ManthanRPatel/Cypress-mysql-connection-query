@@ -1,4 +1,4 @@
-# Cypress-mysql-connection-query
+# Cypress-mysql-query-and-localstorage-jwt
 cypress mysql connection , mysql perform query ,, select query with examples,,,
 
 available at issuse in link = https://github.com/cypress-io/cypress/issues/3689#issuecomment-558689250
@@ -49,3 +49,44 @@ on('task', {
 note::: performing query can take some times... so always put cy.wait(2000) in query performing lines.....
     
     
+
+## Cypress -localstorage-jwt 
+
+1) first put code in cypress/support/commands.js
+let LOCAL_STORAGE_MEMORY = {};
+
+Cypress.Commands.add("saveLocalStorageCache", () => {
+  Object.keys(localStorage).forEach(key => {
+    LOCAL_STORAGE_MEMORY[key] = localStorage[key];
+  });
+});
+
+Cypress.Commands.add("restoreLocalStorageCache", () => {
+  Object.keys(LOCAL_STORAGE_MEMORY).forEach(key => {
+    localStorage.setItem(key, LOCAL_STORAGE_MEMORY[key]);
+  });
+});
+
+Cypress.Commands.add("clearLocalStorageCache", () => {
+    localStorage.clear();
+    LOCAL_STORAGE_MEMORY = {};
+});
+
+2) then call it on your file like
+
+    beforeEach(() => {
+        cy.restoreLocalStorageCache();
+    });
+    
+    afterEach(() => {
+        cy.saveLocalStorageCache();
+    });
+    
+    after(function() {
+        cy.clearLocalStorageCache();
+    });
+    
+    # conclusion : doing this will prvent cypress clearing localstorage and jwt token after your all tests...
+
+
+
