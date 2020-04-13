@@ -12,3 +12,18 @@ export function selectQuery( tbl_name, condit , queryParams ){
     //         return(results);
     //     })
 }
+
+
+export function localStorageHookCall(){
+    beforeEach(() => {
+        cy.restoreLocalStorageCache();
+    });
+    
+    afterEach(() => {
+        cy.saveLocalStorageCache();
+    });
+   
+    after(function() {
+        cy.clearLocalStorageCache();
+    });
+}
