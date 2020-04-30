@@ -97,3 +97,4 @@ note::: performing query can take some times... so always put cy.wait(2000) in q
 
 
 
+# for file upload - https://github.com/cypress-io/cypress/issues/170
